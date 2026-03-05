@@ -1,7 +1,7 @@
 # nd2miata-rcp-lua
 LUA scripts for Autosport Labs' racecapture series that work with the ND2 Miata (2016-2025)
 
-This is a variant of the script linked to in this forum post:
+This is a variant of the LUA script contained in the RCP config linked to in this forum post:
 
 https://forum.autosportlabs.com/viewtopic.php?p=30789#p30789
 
