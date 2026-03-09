@@ -10,9 +10,7 @@ This revision replaces the original single-line Lua brake pressure decoder with 
 Goals of the update:
 
 - Fix CAN2 instability/remove blocking behavior (OG script caused issues with TireX sensors running on CAN2)
-- Simplify overflow handling
 - Avoid unintended CAN reinitialization
-- Improve readability and maintainability
 
 ---
 
@@ -46,42 +44,4 @@ Why:
 
 ---
 
-### 3️⃣ Replaced Custom Overflow Logic With Standard 16-bit Unwrap
-
-Before:
-
-- Two overflow flags
-- Threshold of ±30000
-- Manual addition of 65535 / 131070
-- Non-standard wrap math
-
-After:
-
-- Standard delta-based unwrap:
-  - Compute delta = raw - previous
-  - If delta > 32768 → subtract 65536
-  - If delta < -32768 → add 65536
-  - Accumulate continuous value
-
----
-
-### 4️⃣ Cleaner Big-Endian Extraction
-
-Before:
-
-- Generic map_chan() system
-- Indirect function dispatch
-- Offset math embedded in mapper
-
-After:
-
-    local function u16_be(data, start0)
-      local i = start0 + 1
-      return data[i] * 256 + data[i + 1]
-    end
-
-Why:
-
-- Explicit 16-bit big-endian extraction
-- Easier to audit (IMHO)
 
