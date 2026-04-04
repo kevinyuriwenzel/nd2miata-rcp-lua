@@ -1,4 +1,7 @@
 # nd2miata-rcp-lua
+
+NOTE: this doesn't currently work, the non-blocking reads break the brake (heh) functionality.
+
 LUA scripts for Autosport Labs' racecapture series that work with the ND2 Miata (2016-2025)
 
 This is a variant of the LUA script contained in the RCP config linked to in this forum post:
